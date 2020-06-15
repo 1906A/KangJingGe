@@ -1,0 +1,19 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: update-service
+
+  servlet:
+    multipart:
+      max-file-size: 1MB
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+
+#user:
+#   httmImageYuming: http://image.leyou.com/
+

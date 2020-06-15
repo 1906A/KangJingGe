@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="lyupadteload" />
+        <module name="ly-api-gateway" />
+        <module name="leyougoodsweb" />
+        <module name="ly-registry" />
+        <module name="ly-item-interface" />
+        <module name="ly-search" />
+        <module name="leyousearch" />
+        <module name="ly-item-service" />
+        <module name="leyoucommon" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="leyou" target="1.8" />
+      <module name="leyoucommon" target="1.8" />
+      <module name="leyougoodsweb" target="1.8" />
+      <module name="leyousearch" target="1.8" />
+      <module name="ly-api-gateway" target="1.8" />
+      <module name="ly-item" target="1.8" />
+      <module name="ly-item-interface" target="1.8" />
+      <module name="ly-item-service" target="1.8" />
+      <module name="ly-registry" target="1.8" />
+      <module name="ly-search" target="1.8" />
+      <module name="lysearch" target="1.8" />
+      <module name="lyupadteload" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="leyou" options="-parameters" />
+      <module name="leyoucommon" options="-parameters" />
+      <module name="leyougoodsweb" options="-parameters" />
+      <module name="leyousearch" options="-parameters" />
+      <module name="ly-api-gateway" options="-parameters" />
+      <module name="ly-item" options="-parameters" />
+      <module name="ly-item-interface" options="-parameters" />
+      <module name="ly-item-service" options="-parameters" />
+      <module name="ly-registry" options="-parameters" />
+      <module name="ly-search" options="-parameters" />
+      <module name="lysearch" options="-parameters" />
+      <module name="lyupadteload" options="-parameters" />
+    </option>
+  </component>
+</project>
