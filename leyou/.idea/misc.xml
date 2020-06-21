@@ -11,7 +11,9 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/leyou-user/leyou-interface/pom.xml" />
         <option value="$PROJECT_DIR$/ly-search/pom.xml" />
+        <option value="$PROJECT_DIR$/ly-user/pom.xml" />
       </set>
     </option>
   </component>
