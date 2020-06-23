@@ -656,7 +656,7 @@
                                     skuId: this.sku.id,
                                     title: this.sku.title,
                                     price: this.sku.price,
-                                    image: this.sku.images,
+                                    images: this.sku.images,
                                     num:  this.num,
                                     ownSpec: this.sku.ownSpec
                                 }
@@ -667,8 +667,12 @@
                             ly.store.set("carts",carts);
                             ly.store.set("selectedSku",selectedSku);
                         }else{
-                            alert("已登录");
+                            //添加到购物车
+                            this.sku.num=this.num;
+                             let skuVo = this.sku;
+                            this.ly.http.post("/cart/add",skuVo).then(resp=>{
 
+                            })
                         }
                      })
             }
