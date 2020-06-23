@@ -48,7 +48,7 @@
                                 </li>
                                 <li class="yui3-u-11-24">
                                     <div class="good-item">
-                                        <div class="item-img"><img :src="cart.image" width="80px" height="80px"/></div>
+                                        <div class="item-img"><img :src="cart.images" width="80px" height="80px"/></div>
                                         <div class="item-msg">
 												<span style="line-height:70px ">
 													{{cart.title}}
@@ -66,7 +66,7 @@
                                 </li>
                                 <li class="yui3-u-1-8"><span style="line-height:70px " class="sum">{{ly.formatPrice(cart.price)*cart.num}}</span></li>
                                 <li class="yui3-u-1-8">
-                                    <a href="#none" @click="deleteCar(i)">删除</a><br />
+                                    <a href="#none" @click="deleteCar(cart,i)">删除</a><br />
                                     <a href="#none">移到我的关注</a>
                                 </li>
                             </ul>
@@ -92,7 +92,7 @@
                         <span><em>已节省：</em><i>-¥20.00</i></span>
                     </div>
                     <div class="sumbtn">
-                        <a class="sum-btn"  href="getOrderInfo.html"  target="_blank">结算</a>
+                        <a class="sum-btn"  href="getOrderInfo.html"  target="_blank" @click="topay">结算</a>
                     </div>
                 </div>
             </div>
@@ -278,12 +278,19 @@
                         this.carts=  ly.store.get("carts");
                         this.selected=this.carts;
                     }else{
-                        alert("已登录");
+                        this.ly.http.post("/cart/query").then(resp=>{
+                            this.carts=resp.data;
+                            this.selected=this.carts;
+                        })
+
                     }
                 })
         },
         methods:{
-            deleteCar(i){
+            topay(){
+
+            },
+            deleteCar(cart,i){
                 this.ly.http("/auth/verify")
                     .then(resp=>{
                         this.user= resp.data;
@@ -291,7 +298,12 @@
                             this.carts.splice(i,1)
                             ly.store.set("carts",this.carts);
                         }else{
-                            alert("已登录");
+                             let id=cart.id;
+                            this.ly.http.post("/cart/delete?id="+id).then(resp=>{
+
+                                window.location.reload();
+
+                            })
                         }
                     })
             },
@@ -319,7 +331,11 @@
                         if(this.user.id==null){
                             ly.store.set("carts",this.carts);
                         }else{
-                            alert("已登录");
+                            //后台刷新redis
+                            this.ly.http.post("/cart/update",cart)
+                                .then(resp=>{
+
+                                })
                         }
                     })
             },
@@ -338,7 +354,11 @@
                         if(this.user.id==null){
                              ly.store.set("carts",this.carts);
                         }else{
-                            alert("已登录");
+                            //后台刷新redis
+                            this.ly.http.post("/cart/update",cart)
+                                .then(resp=>{
+
+                                })
                         }
                     })
             }
