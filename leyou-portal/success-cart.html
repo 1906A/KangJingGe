@@ -623,7 +623,7 @@ $(function(){
                 .then(resp=>{
                     this.user= resp.data;
                     if(this.user.id==null){
-                        获取selectedSku
+                        //获取selectedSku
                         this.selectedSku = ly.store.get("selectedSku");
                         this.ownSpec= Object.values(JSON.parse(this.selectedSku.ownSpec)).join("/");
                     }else{

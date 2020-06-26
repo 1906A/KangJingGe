@@ -92,7 +92,7 @@
                         <span><em>已节省：</em><i>-¥20.00</i></span>
                     </div>
                     <div class="sumbtn">
-                        <a class="sum-btn"  href="getOrderInfo.html"  target="_blank" @click="topay">结算</a>
+                        <a class="sum-btn"  @click="topay">结算</a>
                     </div>
                 </div>
             </div>
@@ -287,8 +287,20 @@
                 })
         },
         methods:{
+            //判断用户是否登录
             topay(){
-
+                this.ly.http("/auth/verify")
+                    .then(resp=>{
+                        this.user= resp.data;
+                        if(this.user.id==null){
+                            //未登录
+                           location.href="http://www.leyou.com/login.html?returnUrl"+location.href;
+                        }else{
+                              //存入Storage
+                             ly.store.set("js_selectedSku",this.selected);
+                             window.open("http://www.leyou.com/getOrderInfo.html",target="_blank")
+                        }
+                    })
             },
             deleteCar(cart,i){
                 this.ly.http("/auth/verify")
