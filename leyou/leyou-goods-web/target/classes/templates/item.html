@@ -645,7 +645,8 @@
                         this.user= resp.data;
                         if(this.user.id==null){
                             let carts=ly.store.get("carts") || [];
-                            let cart = carts.find(c=>c.skuId === this.sku.id);
+                            alert("1111");
+                            let cart = carts.find(c=>c.skuId == this.sku.id);
                             let selectedSku={};
                              //判断是否存在
                             if(cart){
